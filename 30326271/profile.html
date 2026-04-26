@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="32x32" href="../icon/cropped-logonuevo-32x32.png">
+    <link rel="icon" sizes="192x192" href="../icon/cropped-logonuevo-192x192.png">
+    <title>Edwyn Guzmán</title>
+    <style>
+        @import '../css/_theme.css';
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--primary-font);
+            color: var(--grey-950);
+        }
+
+        body {
+            background-color: var(--grey-50);
+            font-size: 1.4rem;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-right: 2.2rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 8px 10px 8px -3px  var(--grey-100);
+            background-color: var(--white);
+        }
+
+        .container-left {
+            flex: 0.3;
+            background-color: var(--main-color);
+            padding-right: 6px;
+        }
+
+        .container-left div {
+            display: flex;
+            height: 100%;
+        }
+
+        .container-right {
+            flex: 0.7;
+            padding: 15px 30px 30px 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+
+        .profile-img {
+            width: 100%;
+            height: auto;
+            border-bottom-right-radius: 18%;
+            object-fit: cover;
+        }
+
+        .profile-title {
+            color: var(--main-color);
+        }
+        
+
+        .profile-description {
+            font-style: italic;
+            font-family: var(--condensed-font);
+            max-width: 98%;
+        }
+
+        .feature-5 {
+            font-weight: bold;
+        }
+
+        .contact-info a {
+            font-weight: bold;
+            color: var(--main-color);
+            cursor: pointer;
+        }
+
+        .contact-info a:active,
+        .contact-info a:visited {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header"></header>
+    <section class="container">
+        <div class="container-left">
+            <div>
+                <img src="./30326271.jpg" alt="Foto de perfil de Edwyn Guzmán" class="profile-img">
+            </div>
+        </div>
+        <div class="container-right">
+            <h1 class="profile-title">Edwyn Guzmán</h1>
+
+            <p class="profile-description">
+
+                ¡Hola! soy estudiante de la Universidad Central de Venezuela y un apasionado por crear tecnología. Me
+                especializo en desarrollar aplicaciones web y móviles con JavaScript y Python.
+                Además de programar, soy preparador de Probabilidad y Estadística en la UCV, lo que me ha dado una base
+                analítica sólida y la habilidad de trabajar en equipo para resolver problemas complejos. Me encantan los
+                retos técnicos, aprender herramientas nuevas y colaborar en proyectos de código abierto para seguir
+                aportando a la comunidad.
+            </p>
+
+            <table class="container-feature">
+                <tr class="feature-1">
+                    <td>Mi color favorito es: </td>
+                    <td> Negro </td>
+                </tr>
+                <tr class="feature-2">
+                    <td>Mi libro favorito es: </td>
+                    <td>Un proposito para mi vida</td>
+                </tr>
+                <tr class="feature-3">
+                    <td>Mi género musical favorito es: </td>
+                    <td>Pop</td>
+                </tr>
+                <tr class="feature-4">
+                    <td>Mi videojuego favorito es: </td>
+                    <td>Outlast</td>
+                </tr>
+
+                <tr class="feature-5">
+                    <td>Lenguajes aprendidos: </td>
+                    <td>JavaScript, Python, Java, C/C++, TypeScript, Prolog, Haskell</td>
+                </tr>
+            </table>
+
+            <div class="contact-info">
+                <p>
+                    Si necesitan comunicarse conmigo me pueden escribir a:
+                    <a href="mailto:edwynjesus30@gmail.com">
+                        edwynjesus30@gmail.com
+                    </a>
+                </p>
+                
+            </div>
+
+
+        </div>
+    </section>
+    <footer class="footer"></footer>
+</body>
+
+</html>
