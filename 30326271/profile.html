@@ -7,97 +7,37 @@
     <link rel="icon" sizes="32x32" href="../icon/cropped-logonuevo-32x32.png">
     <link rel="icon" sizes="192x192" href="../icon/cropped-logonuevo-192x192.png">
     <title>Edwyn Guzmán</title>
-    <style>
-        @import '../css/_theme.css';
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: var(--primary-font);
-            color: var(--grey-950);
-        }
-
-        body {
-            background-color: var(--grey-50);
-            font-size: 1.4rem;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            margin-right: 2.2rem;
-            margin-bottom: 2.2rem;
-            box-shadow: 8px 10px 8px -3px  var(--grey-100);
-            background-color: var(--white);
-        }
-
-        .container-left {
-            flex: 0.3;
-            background-color: var(--main-color);
-            padding-right: 6px;
-        }
-
-        .container-left div {
-            display: flex;
-            height: 100%;
-        }
-
-        .container-right {
-            flex: 0.7;
-            padding: 15px 30px 30px 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-
-        .profile-img {
-            width: 100%;
-            height: auto;
-            border-bottom-right-radius: 18%;
-            object-fit: cover;
-        }
-
-        .profile-title {
-            color: var(--main-color);
-        }
-        
-
-        .profile-description {
-            font-style: italic;
-            font-family: var(--condensed-font);
-            max-width: 98%;
-        }
-
-        .feature-5 {
-            font-weight: bold;
-        }
-
-        .contact-info a {
-            font-weight: bold;
-            color: var(--main-color);
-            cursor: pointer;
-        }
-
-        .contact-info a:active,
-        .contact-info a:visited {
-            color: var(--accent-color);
-        }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <header class="header"></header>
-    <section class="container">
-        <div class="container-left">
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container-icon">
+                <h1 class="icono">ATI<span>[UCV]</span>Log</h1>
+            </div>
+
+            <div class="nav-container-search">
+                <div class="search-box">
+                    <input type="text" placeholder="Nombre..." class="search-input">
+                    <button class="search-button">Buscar</button>
+                </div>
+            </div>
+
+            <div class="nav-container-user">
+                <div class="user-box">
+                    <img src="./../icon/userIcon.svg" alt="User Icon" class="user-icon">
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="profile-container">
+        <div class="profile-container-left">
             <div>
                 <img src="./30326271.jpg" alt="Foto de perfil de Edwyn Guzmán" class="profile-img">
             </div>
         </div>
-        <div class="container-right">
+        <div class="profile-container-right">
             <h1 class="profile-title">Edwyn Guzmán</h1>
 
             <p class="profile-description">
@@ -110,7 +50,7 @@
                 aportando a la comunidad.
             </p>
 
-            <table class="container-feature">
+            <table class="profile-container-feature">
                 <tr class="feature-1">
                     <td>Mi color favorito es: </td>
                     <td> Negro </td>
@@ -141,13 +81,15 @@
                         edwynjesus30@gmail.com
                     </a>
                 </p>
-                
+
             </div>
 
 
         </div>
     </section>
-    <footer class="footer"></footer>
+    <footer class="footer">
+        <p>Copyright © 2026 Escuela de computación - ATI. Todos los derechos reservados</p>
+    </footer>
 </body>
 
 </html>
