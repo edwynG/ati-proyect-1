@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="32x32" href="../icon/cropped-logonuevo-32x32.png">
+    <link rel="icon" sizes="192x192" href="../icon/cropped-logonuevo-192x192.png">
+    <title>ATI[UCV]Log 2026-1</title>
+    <style>
+        @import '../css/_theme.css';
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--primary-font);
+            color: var(--grey-950);
+        }
+
+        body {
+            background-color: var(--grey-50);
+            font-size: 1.4rem;
+        }
+
+        .header {
+            background-color: var(--main-color);
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            height: 100%;
+            flex-grow: 1;
+            gap: 30px;
+        }
+
+        .nav-container-icon {
+            flex: 0.3;
+        }
+
+        .icono {
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .icono span {
+            color: var(--white);
+            font-size: 1.4rem;
+            font-weight: lighter;
+            font-family: var(--flex-font);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .nav-container-search {
+            flex: 0.5;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .search-input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 15px 0 0 15px;
+            outline: none;
+            height: 40px;
+            flex: 0.8;
+        }
+
+        .search-button {
+            padding: 8px 12px;
+            border: none;
+            background-color: var(--accent-color);
+            color: var(--white);
+            cursor: pointer;
+            height: 40px;
+            border-radius: 0px 15px 15px 0px;
+            padding: 8px 12px;
+            flex: 0.15;
+        }
+
+        .nav-container-user {
+            flex: 0.2;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .user-box {
+            display: flex;
+            align-items: center;
+            background-color: var(--accent-color);
+            padding: 8px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .container-title {
+            max-width: 980px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 2rem;
+        }
+
+        .container-cards {
+            display: grid;
+            grid-template-columns: 300px 300px 300px;
+            grid-template-rows: auto;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 20px;
+            border-radius: 20px;
+            background-color: var(--main-color);
+            overflow: hidden;
+            max-width: 280px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card-bottom {
+            display: flex;
+            align-items: center;
+        }
+
+        .card-container-img {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .card-profile-img {
+            width: 100%;
+            max-height: 280px;
+            object-fit: cover;
+        }
+
+        .card-bottom {
+            padding: 15px;
+            background-color: var(--white);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 15px 0;
+            border-top: 2px solid var(--grey-200);
+            height: 100px;
+
+        }
+
+        .footer p {
+            color: var(--grey-400);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container-icon">
+                <h1 class="icono">ATI<span>[UCV]</span>Log</h1>
+            </div>
+
+            <div class="nav-container-search">
+                <div class="search-box">
+                    <input type="text" placeholder="Nombre..." class="search-input">
+                    <button class="search-button">Buscar</button>
+                </div>
+            </div>
+
+            <div class="nav-container-user">
+                <div class="user-box">
+                    <img src="./icon/userIcon.svg" alt="User Icon" class="user-icon">
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="container">
+        <div class="container-title">
+            <h2 class="title">Semestre 2026-1</h2>
+        </div>
+        <div class="container-cards">
+
+            <!-- Mi perfil -->
+            <div class="card">
+                <div class="card-top">
+                    <div class="card-container-img">
+                        <img src="./30326271/30326271.jpg" alt="Profile Image" class="card-profile-img">
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <h2 class="card-title">Edwyn Guzmán</h2>
+                </div>
+            </div>
+
+
+            <!-- Dummy 1 -->
+            <div class="card">
+                <div class="card-top">
+                    <div class="card-container-img">
+                        <img src="./Dummies/Dummy1.png" alt="Profile Image" class="card-profile-img">
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <h2 class="card-title">Helena Torres</h2>
+                </div>
+            </div>
+
+            <!-- Dummy 2 -->
+            <div class="card">
+                <div class="card-top">
+                    <div class="card-container-img">
+                        <img src="./Dummies/Dummy2.png" alt="Profile Image" class="card-profile-img">
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <h2 class="card-title">Carlos Blanco</h2>
+                </div>
+            </div>
+
+            <!-- Dummy 3 -->
+            <div class="card">
+                <div class="card-top">
+                    <div class="card-container-img">
+                        <img src="./Dummies/Dummy3.png" alt="Profile Image" class="card-profile-img">
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <h2 class="card-title">Juan Gutierrez</h2>
+                </div>
+            </div>
+
+
+            <!-- Dummy 4 -->
+            <div class="card">
+                <div class="card-top">
+                    <div class="card-container-img">
+                        <img src="./Dummies/Dummy4.png" alt="Profile Image" class="card-profile-img">
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <h2 class="card-title">Isabel Contreras</h2>
+                </div>
+            </div>
+
+
+            <!-- Dummy 5 -->
+            <div class="card">
+                <div class="card-top">
+                    <div class="card-container-img">
+                        <img src="./Dummies/Dummy5.png" alt="Profile Image" class="card-profile-img">
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <h2 class="card-title">Gabriel Vargas</h2>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <footer class="footer">
+        <p>Copyright © 2026 Escuela de computación - ATI. Todos los derechos reservados</p>
+    </footer>
+
+</body>
+
+</html>
