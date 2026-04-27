@@ -147,9 +147,14 @@
      background-color: var(--main-color);
      overflow: hidden;
      max-width: 280px;
+     transition: transform 0.3s ease, background-color 0.3s ease;
      cursor: pointer;
-     transition: transform 0.3s ease;
  }
+
+  .card:hover {
+     transform: scale(1.08) rotate(5deg);
+     background-color: var(--accent-color);
+  } 
 
  .card-bottom {
      display: flex;
