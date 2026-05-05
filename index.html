@@ -28,6 +28,10 @@
                 <div class="user-box">
                     <img src="./icon/userIcon.svg" alt="User Icon" class="user-icon">
                 </div>
+
+                <div class="user-menu">
+                    <img src="./icon/menuIcon.svg" alt="User Icon Menu" class="user-menu-icon">
+                </div>
             </div>
         </nav>
     </header>
@@ -41,7 +45,10 @@
             <div class="card" onclick="window.location.href='/30326271/profile.html'">
                 <div class="card-top">
                     <div class="card-container-img">
-                        <img src="./30326271/30326271.jpg" alt="Profile Image" class="card-profile-img">
+                        <picture class="card-container-img">
+                            <source media="(max-width: 768px)" srcset="./30326271/30326271Small.jpg" class="card-profile-img">
+                            <img src="./30326271/30326271Big.jpg" alt="Profile Image" class="card-profile-img">
+                        </picture>
                     </div>
                 </div>
                 <div class="card-bottom">
