@@ -1,15 +1,15 @@
  @import './_theme.css';
 
  :root {
-     --img-profile-sm-w: 240px;
-     --img-profile-md-w: 260px;
+     --img-profile-sm: 240px;
+     --img-profile-md: 260px;
 
  }
 
 
  @media (width <=1200px) {
      :root {
-         --img-profile-md-w: 240px;
+         --img-profile-md: 240px;
 
      }
 
@@ -170,7 +170,7 @@
 
  .home-container-cards {
      display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(var(--img-profile-md-w), 1fr));
+     grid-template-columns: repeat(auto-fit, minmax(var(--img-profile-md), 1fr));
      grid-template-rows: auto;
      gap: 30px;
      justify-items: center;
@@ -185,7 +185,7 @@
      border-radius: 20px;
      background-color: var(--main-color);
      overflow: hidden;
-     min-width: var(--img-profile-md-w);
+     min-width: var(--img-profile-md);
      transition: transform 0.3s ease, background-color 0.3s ease;
      cursor: pointer;
  }
@@ -209,8 +209,7 @@
 
  .card-profile-img {
      width: 100%;
-     max-height: var(--img-profile-md-w);
-     max-width: var(--img-profile-md-w);
+     max-height: var(--img-profile-md);
      object-fit: cover;
  }
 
@@ -325,14 +324,13 @@
 
 
      .card {
-         min-width: var(--img-profile-sm-w);
+         min-width: var(--img-profile-sm);
 
 
      }
 
      .card-profile-img {
-         max-width: var(--img-profile-sm-w);
-         max-height: var(--img-profile-sm-w);
+         max-height: var(--img-profile-sm);
      }
 
      .nav {

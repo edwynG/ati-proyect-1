@@ -8,25 +8,28 @@
     <link rel="icon" sizes="192x192" href="../icon/cropped-logonuevo-192x192.png">
     <title>ATI[UCV]Log 2026-1</title>
     <link rel="stylesheet" href="./css/style.css">
+    <script type="text/javascript" src="./conf/configES.json" defer></script>
+    <script type="text/javascript" src="./data/index.json" defer></script>
+    <script type="text/javascript" src="./js/index.js" defer></script>
 </head>
 
 <body>
     <header class="header">
         <nav class="nav">
             <div class="nav-container-icon">
-                <h1 class="icono">ATI<span>[UCV]</span>Log</h1>
+                <h1 class="icono" id="icon-text"></h1>
             </div>
 
             <div class="nav-container-search">
                 <div class="search-box">
-                    <input type="text" placeholder="Nombre..." class="search-input">
-                    <button class="search-button">Buscar</button>
+                    <input type="text" placeholder="" class="search-input" id="search-input">
+                    <button class="search-button" id="search-button"></button>
                 </div>
             </div>
 
             <div class="nav-container-user">
-                <div class="user-box">
-                    <img src="./icon/userIcon.svg" alt="User Icon" class="user-icon">
+                <div class="user-box" id="user-box">
+                    <img src="./icon/userIcon.svg" alt="User Icon" class="user-icon" id="user-icon">
                 </div>
 
                 <div class="user-menu">
@@ -37,35 +40,23 @@
     </header>
     <section class="home-container">
         <div class="home-container-title">
-            <h2 class="title">Semestre 2026-1</h2>
+            <h2 class="title" id="home-title"></h2>
         </div>
-        <div class="home-container-cards">
+        <div class="home-container-cards" id="home-container-cards">
 
-            <!-- Mi perfil -->
-            <div class="card" onclick="window.location.href='/30326271/profile.html'">
+          
+            <!-- <div class="card" onclick="window.location.href='/30326271/profile.html'">
                 <div class="card-top">
                     <div class="card-container-img">
                         <picture class="card-container-img">
-                            <source media="(max-width: 768px)" srcset="./30326271/30326271Small.jpg"
+                            <source media="(max-width: 768px)" srcset=""
                                 class="card-profile-img">
-                            <img src="./30326271/30326271Big.jpg" alt="Profile Image" class="card-profile-img">
+                            <img src="" alt="Profile Image" class="card-profile-img">
                         </picture>
                     </div>
                 </div>
                 <div class="card-bottom">
-                    <h2 class="card-title">Edwyn Guzmán</h2>
-                </div>
-            </div>
-
-            <!-- Dummy 1
-            <div class="card">
-                <div class="card-top">
-                    <div class="card-container-img">
-                        <img src="./Dummies/Dummy1.png" alt="Profile Image" class="card-profile-img">
-                    </div>
-                </div>
-                <div class="card-bottom">
-                    <h2 class="card-title">Helena Torres</h2>
+                    <h2 class="card-title"></h2>
                 </div>
             </div> -->
 
@@ -74,7 +65,7 @@
 
     </section>
     <footer class="footer">
-        <p>Copyright © 2026 Escuela de computación - ATI. Todos los derechos reservados</p>
+        <p id="footer-text"></p>
     </footer>
 
 </body>
