@@ -1,3 +1,46 @@
+// Warning: La funcion esta diseñada para retornar un nodo asi que cualquier conjunto de nodos que intente crear debe estar contenido en una etiqueta 
+const create_node_from_text = (text) => {
+    const node = document.createElement('div');
+    node.innerHTML = text;
+    return node.firstElementChild;
+}
+
+// Función para crear una tarjeta de perfil a partir de un id, nombre, su extension de imagen y una ruta opcional (por defecto es la raíz del proyecto)
+const create_profile_card = (id, name, image_ext, root = "./") => {
+
+    // Tipos de imagenes: jpg, png, webp
+    const src_img_big = root + id + "/" + id + "Big" + image_ext;
+    const src_img_small = root + id + "/" + id + "Small" + image_ext;
+
+    let card = create_node_from_text(`
+            <div class="card">
+                <div class="card-top">
+                    <div class="card-container-img">
+                        <picture class="card-container-img">
+                            <source media="(max-width: 768px)" srcset="${src_img_small}" class="card-profile-img">
+                            <img src="${src_img_big}" alt="${name}" class="card-profile-img">
+                        </picture>
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <h2 class="card-title">${name}</h2>
+                </div>
+            </div>
+    `);
+
+    return card;
+
+}
+
+// Función para crear la lista de perfiles a partir de un array de objetos con nombre e imagen
+const create_list_profiles = (profiles) => profiles.map(profile => {
+    let card = create_profile_card(profile.ci, profile.name, profile.image_ext);
+
+    // Agregar el evento click a la tarjeta para redirigir a la página de perfil correspondiente
+    card.addEventListener('click', () => window.location.href = `./profile.html?id=${profile.ci}&lang=${lang}`)
+    return card;
+});
+
 // Función para cargar un nuevo script de forma dinámica
 const load_new_script = (url, type = "module") => {
     return new Promise((resolve, reject) => {
@@ -20,27 +63,24 @@ const load_new_script = (url, type = "module") => {
     });
 };
 
-// Función para cargar el perfil del usuario
-const load_profile = async (lang, root = "./") => {
+
+const load_scripts = async (root = "./") => {
     try {
-        // Cargar el script de datos de forma dinámica
-        await load_new_script(root + id + "/profile.json", type = "text/javascript");
-         await load_new_script(root + "conf/" + "config" + lang.toUpperCase() + ".json", type = "text/javascript");
-        // Configuración de la página a partir del archivo configXX.json
-        footer_text.textContent = config.copyRight;
-        search_button.textContent = config.search;
-        search_input.placeholder = config.name + '...';
-        icon_text.innerHTML = config.site.toString().replace('[UCV]', '<span>[UCV]</span>').replaceAll(',', '');
-        icon_text.setAttribute('title', config.home);
-        user_box.setAttribute('title', config.profile);
+        await load_new_script(root + id + "/profile.json", "text/javascript");
+        await load_new_script(root + "conf/" + "config" + lang.toUpperCase() + ".json", "text/javascript");
 
+        console.log("Todos los scripts se cargaron en orden.");
+    } catch (error) {
+        console.error("Error cargando scripts:", error);
+        throw error;
+    }
+}
 
-        // Buscar el perfil correspondiente al id obtenido de la URL
-        document.title = profile.name;
+const show_profile_data = (root = './') => {
 
-        let profile_img_src_small = root + id + "/" + id + "Small" + profile.image_ext;
-        let profile_img_src_big = root + id + "/" + id + "Big" + profile.image_ext;
-        profile_container.innerHTML = `
+    let profile_img_src_small = root + id + "/" + id + "Small" + profile.image_ext;
+    let profile_img_src_big = root + id + "/" + id + "Big" + profile.image_ext;
+    profile_container.innerHTML = `
                 <div class="profile-container-left">
                     <div>
                         <picture>
@@ -89,22 +129,49 @@ const load_profile = async (lang, root = "./") => {
                     </div>
                 </div>
             `;
+}
+
+// Función para cargar el perfil del usuario
+const load_profile = async (lang, root = "./") => {
+    try {
+        // Cargar el script de datos de forma dinámica
+        await load_scripts(root);
+
+        // Configuración de la página a partir del archivo configXX.json
+        footer_text.textContent = config.copyRight;
+        search_button.textContent = config.search;
+        search_input.placeholder = config.name + '...';
+        icon_text.innerHTML = config.site.toString().replace('[UCV]', '<span>[UCV]</span>').replaceAll(',', '');
+        icon_text.setAttribute('title', config.home);
+        user_box.setAttribute('title', config.profile);
+        // title correspodiente al usuario
+        document.title = profile.name;
+
+        // Muestra la informacion del perfil
+        show_profile_data(root);
+
     } catch (error) {
         console.error('Error al cargar el perfil:', error);
         profile_container.innerHTML = `<h2 class="error-message">No se pudo cargar el perfil. Por favor, inténtalo de nuevo más tarde.</h2>`;
     }
 };
 
+const search_profile = (text) => {
+    return profiles.filter(({ name }) => name.toLowerCase().includes(text.toLowerCase()));
+}
 
 
 // Variables globales
+
 const icon_text = document.getElementById('icon-text');
 const footer_text = document.getElementById('footer-text');
 const search_input = document.getElementById('search-input');
 const search_button = document.getElementById('search-button');
 const user_box = document.getElementById('user-box');
+const container_search_list = document.getElementById("container-search-list");
+container_search_list.style.display = "none"
 
-icon_text.addEventListener('click', () => window.location.href = './index.html');
+icon_text.addEventListener('click', () => window.location.href = `./index.html?lang=${lang}`);
 
 // Cargar los perfiles en la página profile
 
@@ -115,6 +182,58 @@ document.documentElement.lang = lang;
 
 const profile_container = document.getElementById('profile-container');
 
-
-
 load_profile(lang);
+
+// Logica para renderizar la busqueda en profile
+search_button.addEventListener('click', () => {
+    const text = search_input.value.trim().toLowerCase();
+    profile_container.style.display = "none";
+    container_search_list.style.display = "block"
+
+    if (!text) {
+        // Aparece el contenedor del perfil
+        profile_container.style.display = "flex";
+        profile_container.innerHTML = "";
+
+        // Limpia contenedor de lista de usuarios encontrados
+        container_search_list.innerHTML = ``;
+        show_profile_data();
+        return;
+    }
+
+    const list_profile = search_profile(text);
+
+    // Se inserta estructura para mostrar las cards en contenedor auxiliar
+    container_search_list.innerHTML = `
+        <div class="home-container-title">
+            <h2 class="title" id="home-title">${config.semester}</h2>
+        </div>
+        <div class="home-container-cards" id="search-container-cards">
+
+        </div>`;
+
+    if (list_profile.length === 0) {
+        document.getElementById("search-container-cards").innerHTML = `<p style="color:blue">${config.query.replace("[query]", `<strong style="color:inherit">${text}</strong>`)}</p>`;
+        return;
+    }
+
+    // Renderizamos los resultados
+    create_list_profiles(list_profile).forEach(card => {
+        document.getElementById("search-container-cards").appendChild(card);
+    });
+});
+
+// logica para cuando borras todo el texto en el input
+search_input.addEventListener('input', (e) => {
+    const text = e.target.value.trim().toLowerCase();
+    if (!text) {
+        // Aparece el contenedor del perfil
+        profile_container.style.display = "flex";
+        profile_container.innerHTML = "";
+
+        // Limpia contenedor de lista de usuarios encontrados
+        container_search_list.innerHTML = ``;
+        show_profile_data();
+        return;
+    }
+});

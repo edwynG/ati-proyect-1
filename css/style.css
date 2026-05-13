@@ -188,6 +188,7 @@
      min-width: var(--img-profile-md);
      transition: transform 0.3s ease, background-color 0.3s ease;
      cursor: pointer;
+     max-height: 335px;
  }
 
  .card:hover {

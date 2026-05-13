@@ -59,9 +59,13 @@ const create_list_profiles = (profiles) => profiles.map(profile => {
     let card = create_profile_card(profile.ci, profile.name, profile.image_ext);
 
     // Agregar el evento click a la tarjeta para redirigir a la página de perfil correspondiente
-    card.addEventListener('click', () => window.location.href = `./profile.html?id=${profile.ci}`)
+    card.addEventListener('click', () => window.location.href = `./profile.html?id=${profile.ci}&lang=${lang}`)
     return card;
 });
+
+const search_profile = (text) => {
+    return profiles.filter(({ name }) => name.toLowerCase().includes(text.toLowerCase()));
+}
 
 const load_home = async (lang, root = "./") => {
     try {
@@ -102,3 +106,39 @@ const lang = parameters.get('lang')?.toLowerCase() || 'es';
 document.documentElement.lang = lang;
 
 load_home(lang);
+
+// Logica para renderizar la busqueda en profile
+search_button.addEventListener('click', () => {
+    const text = search_input.value.trim().toLowerCase();
+
+    if (!text) {
+        container_cards.innerHTML = "";
+        // Cargar los perfiles en la página home
+        create_list_profiles(profiles).forEach(card => container_cards.appendChild(card));
+        return;
+    }
+
+    const list_profile = search_profile(text);
+    container_cards.innerHTML = "";
+
+    if (list_profile.length === 0) {
+        container_cards.innerHTML = `<p style="color:blue">${config.query.replace("[query]", `<strong style="color:inherit">${text}</strong>`)}</p>`
+        return;
+    }
+
+    // Renderizamos los resultados
+    create_list_profiles(list_profile).forEach(card => {
+        container_cards.appendChild(card);
+    });
+});
+
+// logica para cuando borras todo el texto en el input
+search_input.addEventListener('input', (e) => {
+    const text = e.target.value.trim().toLowerCase();
+    if (!text) {
+        container_cards.innerHTML = "";
+        // Cargar los perfiles en la página home
+        create_list_profiles(profiles).forEach(card => container_cards.appendChild(card));
+        return;
+    }
+});
