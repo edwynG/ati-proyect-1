@@ -8,89 +8,41 @@
     <link rel="icon" sizes="192x192" href="../icon/cropped-logonuevo-192x192.png">
     <title>Edwyn Guzmán</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="./conf/configES.json" defer></script>
+    <script type="text/javascript" src="./js/profile.js" defer></script>
+
 </head>
 
 <body>
     <header class="header">
         <nav class="nav">
             <div class="nav-container-icon">
-                <h1 class="icono" onclick="window.location.href='/index.html'">ATI<span>[UCV]</span>Log</h1>
+                <h1 class="icono" id="icon-text"></h1>
             </div>
 
             <div class="nav-container-search">
                 <div class="search-box">
-                    <input type="text" placeholder="Nombre..." class="search-input">
-                    <button class="search-button">Buscar</button>
+                    <input type="text" placeholder="" class="search-input" id="search-input">
+                    <button class="search-button" id="search-button"></button>
                 </div>
             </div>
 
             <div class="nav-container-user">
-                <div class="user-box">
-                    <img src="../icon/userIcon.svg" alt="User Icon" class="user-icon">
+                <div class="user-box" id="user-box">
+                    <img src="./icon/userIcon.svg" alt="User Icon" class="user-icon" id="user-icon">
                 </div>
 
                 <div class="user-menu">
-                    <img src="../icon/menuIcon.svg" alt="User Icon Menu" class="user-menu-icon">
+                    <img src="./icon/menuIcon.svg" alt="User Icon Menu" class="user-menu-icon">
                 </div>
             </div>
         </nav>
     </header>
-    <section class="profile-container">
-        <div class="profile-container-left">
-            <div>
-               <picture>
-                    <source media="(max-width: 768px)" srcset="./30326271Small.jpg"  class="profile-img" type="image/jpeg">
-                    <img src="./30326271Big.jpg" alt="Profile Image" class="profile-img">
-                </picture>
-            </div>
-        </div>
-        <div class="profile-container-right">
-            <h1 class="profile-title"></h1>
-
-            <p class="profile-description">
-
-
-            </p>
-
-            <table class="profile-container-feature">
-                <tr class="feature-1">
-                    <td>Mi color favorito es: </td>
-                    <td>  </td>
-                </tr>
-                <tr class="feature-2">
-                    <td>Mi libro favorito es: </td>
-                    <td></td>
-                </tr>
-                <tr class="feature-3">
-                    <td>Mi género musical favorito es: </td>
-                    <td></td>
-                </tr>
-                <tr class="feature-4">
-                    <td>Mi videojuego favorito es: </td>
-                    <td></td>
-                </tr>
-
-                <tr class="feature-5">
-                    <td>Lenguajes aprendidos: </td>
-                    <td></td>
-                </tr>
-            </table>
-
-            <div class="contact-info">
-                <p>
-                    Si necesitan comunicarse conmigo me pueden escribir a:
-                    <a href="mailto:edwynjesus30@gmail.com">
-                       
-                    </a>
-                </p>
-
-            </div>
-
-
-        </div>
+    <section class="profile-container" id="profile-container">
+       
     </section>
     <footer class="footer">
-        <p>Copyright © 2026 Escuela de computación - ATI. Todos los derechos reservados</p>
+        <p id="footer-text"></p>
     </footer>
 </body>
 
