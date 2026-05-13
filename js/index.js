@@ -5,8 +5,30 @@ const create_node_from_text = (text) => {
     return node.firstElementChild;
 }
 
+// Función para cargar un nuevo script de forma dinámica
+const load_new_script = (url, type = "module") => {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = url;
+        script.type = type;
+
+        // Se ejecuta cuando el script carga con éxito
+        script.onload = () => {
+            console.log(`Script cargado`);
+            resolve(script);
+        };
+
+        // Es vital manejar el error por si la URL falla o no hay internet
+        script.onerror = () => {
+            reject(new Error(`Error al intentar cargar el script: ${url}`));
+        };
+
+        document.head.appendChild(script);
+    });
+};
+
 // Función para crear una tarjeta de perfil a partir de un id, nombre, su extension de imagen y una ruta opcional (por defecto es la raíz del proyecto)
-const create_profile_card = (id, name, image_ext, root="./") => {
+const create_profile_card = (id, name, image_ext, root = "./") => {
 
     // Tipos de imagenes: jpg, png, webp
     const src_img_big = root + id + "/" + id + "Big" + image_ext;
@@ -32,7 +54,6 @@ const create_profile_card = (id, name, image_ext, root="./") => {
 
 }
 
-
 // Función para crear la lista de perfiles a partir de un array de objetos con nombre e imagen
 const create_list_profiles = (profiles) => profiles.map(profile => {
     let card = create_profile_card(profile.ci, profile.name, profile.image_ext);
@@ -41,6 +62,29 @@ const create_list_profiles = (profiles) => profiles.map(profile => {
     card.addEventListener('click', () => window.location.href = `./profile.html?id=${profile.ci}`)
     return card;
 });
+
+const load_home = async (lang, root = "./") => {
+    try {
+        // Cargar el script configXX.json de forma dinámica
+        await load_new_script(root + "conf/" + "config" + lang.toUpperCase() + ".json", type = "text/javascript");
+
+        // Configuración de la página a partir del archivo configXX.json
+        home_title.textContent = config.semester;
+        footer_text.textContent = config.copyRight;
+        search_button.textContent = config.search;
+        search_input.placeholder = config.name + '...';
+        icon_text.innerHTML = config.site.toString().replace('[UCV]', '<span>[UCV]</span>').replaceAll(',', '');
+        icon_text.setAttribute('title', config.home);
+        user_box.setAttribute('title', config.profile);
+        document.title = config.site.toString().replaceAll(',', '') + " " + config.semester.split(' ')[1];
+
+        // Cargar los perfiles en la página home
+        create_list_profiles(profiles).forEach(card => container_cards.appendChild(card));
+    } catch (error) {
+        console.error('Error al cargar la página home:', error);
+        container_cards.innerHTML = `<h2 class="error-message">No se pudieron cargar los perfiles. Por favor, inténtalo de nuevo más tarde.</h2>`;
+    }
+}
 
 
 // Variables globales
@@ -53,16 +97,8 @@ const search_button = document.getElementById('search-button');
 const user_box = document.getElementById('user-box');
 
 
-// Configuración de la página a partir del archivo configXX.json
-home_title.textContent = config.semester;
-footer_text.textContent = config.copyRight;
-search_button.textContent = config.search;
-search_input.placeholder = config.name + '...';
-icon_text.innerHTML = config.site.toString().replace('[UCV]', '<span>[UCV]</span>').replaceAll(',', '');
-icon_text.setAttribute('title', config.home);
-user_box.setAttribute('title', config.profile);
-document.title = config.site.toString().replaceAll(',', '') + " " + config.semester.split(' ')[1];
+const parameters = new URLSearchParams(window.location.search);
+const lang = parameters.get('lang')?.toLowerCase() || 'es';
+document.documentElement.lang = lang;
 
-
-// Cargar los perfiles en la página home
-create_list_profiles(profiles).forEach(card => container_cards.appendChild(card));
+load_home(lang);

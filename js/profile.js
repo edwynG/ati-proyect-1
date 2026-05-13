@@ -21,10 +21,19 @@ const load_new_script = (url, type = "module") => {
 };
 
 // Función para cargar el perfil del usuario
-const load_profile = async (root = "./") => {
+const load_profile = async (lang, root = "./") => {
     try {
         // Cargar el script de datos de forma dinámica
         await load_new_script(root + id + "/profile.json", type = "text/javascript");
+         await load_new_script(root + "conf/" + "config" + lang.toUpperCase() + ".json", type = "text/javascript");
+        // Configuración de la página a partir del archivo configXX.json
+        footer_text.textContent = config.copyRight;
+        search_button.textContent = config.search;
+        search_input.placeholder = config.name + '...';
+        icon_text.innerHTML = config.site.toString().replace('[UCV]', '<span>[UCV]</span>').replaceAll(',', '');
+        icon_text.setAttribute('title', config.home);
+        user_box.setAttribute('title', config.profile);
+
 
         // Buscar el perfil correspondiente al id obtenido de la URL
         document.title = profile.name;
@@ -95,22 +104,17 @@ const search_input = document.getElementById('search-input');
 const search_button = document.getElementById('search-button');
 const user_box = document.getElementById('user-box');
 
-
-// Configuración de la página a partir del archivo configXX.json
-footer_text.textContent = config.copyRight;
-search_button.textContent = config.search;
-search_input.placeholder = config.name + '...';
-icon_text.innerHTML = config.site.toString().replace('[UCV]', '<span>[UCV]</span>').replaceAll(',', '');
-icon_text.setAttribute('title', config.home);
-user_box.setAttribute('title', config.profile);
-
 icon_text.addEventListener('click', () => window.location.href = './index.html');
 
 // Cargar los perfiles en la página profile
+
 const parameters = new URLSearchParams(window.location.search);
+const lang = parameters.get('lang')?.toLowerCase() || 'es';
 const id = parameters.get('id');
+document.documentElement.lang = lang;
+
 const profile_container = document.getElementById('profile-container');
 
 
 
-load_profile();
+load_profile(lang);
