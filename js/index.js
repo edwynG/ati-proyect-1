@@ -75,12 +75,17 @@ const load_home = async (lang, root = "./") => {
         // Configuración de la página a partir del archivo configXX.json
         home_title.textContent = config.semester;
         footer_text.textContent = config.copyRight;
-        search_button.textContent = config.search;
-        search_input.placeholder = config.name + '...';
+        btn_search.textContent = config.search;
+        input_search.placeholder = config.name + '...';
         icon_text.innerHTML = config.site.toString().replace('[UCV]', '<span>[UCV]</span>').replaceAll(',', '');
         icon_text.setAttribute('title', config.home);
-        user_box.setAttribute('title', config.profile);
+        btn_user_box.setAttribute('title', config.profile);
         document.title = config.site.toString().replaceAll(',', '') + " " + config.semester.split(' ')[1];
+
+        // configuraciones para buscador resposive
+        input_search_responsive.placeholder = config.name + '...';
+        btn_search_responsive.textContent = config.search;
+        user_box_title.textContent = config.profile;
 
         // Cargar los perfiles en la página home
         create_list_profiles(profiles).forEach(card => container_cards.appendChild(card));
@@ -90,26 +95,8 @@ const load_home = async (lang, root = "./") => {
     }
 }
 
-
-// Variables globales
-const container_cards = document.getElementById('home-container-cards');
-const icon_text = document.getElementById('icon-text');
-const footer_text = document.getElementById('footer-text');
-const home_title = document.getElementById('home-title');
-const search_input = document.getElementById('search-input');
-const search_button = document.getElementById('search-button');
-const user_box = document.getElementById('user-box');
-
-
-const parameters = new URLSearchParams(window.location.search);
-const lang = parameters.get('lang')?.toLowerCase() || 'es';
-document.documentElement.lang = lang;
-
-load_home(lang);
-
-// Logica para renderizar la busqueda en profile
-search_button.addEventListener('click', () => {
-    const text = search_input.value.trim().toLowerCase();
+const render_profile_searched = (e, input) => {
+    const text = input.value.trim().toLowerCase();
 
     if (!text) {
         container_cards.innerHTML = "";
@@ -130,10 +117,9 @@ search_button.addEventListener('click', () => {
     create_list_profiles(list_profile).forEach(card => {
         container_cards.appendChild(card);
     });
-});
+}
 
-// logica para cuando borras todo el texto en el input
-search_input.addEventListener('input', (e) => {
+const render_restore_profile = (e) => {
     const text = e.target.value.trim().toLowerCase();
     if (!text) {
         container_cards.innerHTML = "";
@@ -141,4 +127,54 @@ search_input.addEventListener('input', (e) => {
         create_list_profiles(profiles).forEach(card => container_cards.appendChild(card));
         return;
     }
-});
+}
+
+
+
+// Variables globales
+const container_cards = document.getElementById('home-container-cards');
+const icon_text = document.getElementById('icon-text');
+const footer_text = document.getElementById('footer-text');
+const home_title = document.getElementById('home-title');
+const input_search = document.getElementById('search-input');
+const btn_search = document.getElementById('search-button');
+const btn_user_box = document.getElementById('user-box');
+
+// variables para menu responsive
+const btn_user_menu = document.getElementById("user-menu-icon");
+const container_nav_responsive = document.getElementById("container-nav-responsive");
+const btn_search_responsive = document.getElementById("search-button-responsive");
+const input_search_responsive = document.getElementById("search-input-responsive");
+const user_box_title = document.getElementById("user-box-responsive-title");
+
+
+const parameters = new URLSearchParams(window.location.search);
+const lang = parameters.get('lang')?.toLowerCase() || 'es';
+document.documentElement.lang = lang;
+
+load_home(lang);
+
+// Logica para renderizar la busqueda en profile
+btn_search.addEventListener('click', (e) => render_profile_searched (e, input_search));
+btn_search_responsive.addEventListener('click',  (e) => render_profile_searched (e, input_search_responsive));
+
+// logica para cuando borras todo el texto en el input
+input_search.addEventListener('input', render_restore_profile);
+input_search_responsive.addEventListener('input', render_restore_profile);
+
+// logica para mostrar menu responsive
+const toggle_class_btn_user = () => {
+    container_nav_responsive.classList.toggle("inset-0");
+    container_nav_responsive.classList.toggle("relative");
+}
+
+const hidden_menu_resposive = (e) => {
+    if (window.innerWidth > 768) {
+        container_nav_responsive.classList.remove("inset-0");
+        container_nav_responsive.classList.remove("relative");
+    }
+}
+
+btn_user_menu.addEventListener("click", toggle_class_btn_user);
+
+window.addEventListener("resize", hidden_menu_resposive)
