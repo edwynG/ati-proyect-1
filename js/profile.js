@@ -213,6 +213,7 @@ const render_restore_profile = (e) => {
 
         // Limpia contenedor de lista de usuarios encontrados
         container_search_list.innerHTML = ``;
+        container_search_list.style.display = "none"
         show_profile_data();
         return;
     }
