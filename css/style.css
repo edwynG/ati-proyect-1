@@ -52,6 +52,11 @@
      padding: 0 30px;
 
  }
+ 
+/* Optimización para animaciones suaves */
+ .container-nav-responsive, .card {
+    will-change: transform, opacity;
+}
 
  .nav {
      display: flex;
