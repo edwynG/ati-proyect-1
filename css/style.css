@@ -95,9 +95,9 @@
 
  }
 
-  .nav-container-search-responsive {
-    padding-top: 10px;
-  }
+ .nav-container-search-responsive {
+     padding-top: 10px;
+ }
 
  .container-nav-responsive {
      position: absolute;
@@ -107,7 +107,7 @@
      gap: 20px;
      border-top: 1px solid white;
      padding: 10px 0px;
-     
+
  }
 
  .relative {
@@ -129,7 +129,7 @@
  }
 
  .search-input-responsive {
-    flex: 0.9;
+     flex: 0.9;
  }
 
  .search-button,
@@ -157,18 +157,18 @@
      align-items: center;
      border-top: 1px solid white;
      padding-top: 15px;
-     
+
  }
 
  .item-user-box-responsive {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    cursor: pointer;
+     display: flex;
+     gap: 15px;
+     align-items: center;
+     cursor: pointer;
  }
 
  .user-box-responsive-title {
-    color: var(--white);
+     color: var(--white);
  }
 
  .user-box,
@@ -300,7 +300,7 @@
      box-shadow: 8px 10px 8px -3px var(--grey-100);
      background-color: var(--white);
      max-height: 700px;
-   
+
  }
 
  .profile-container-left {
@@ -310,12 +310,20 @@
      position: relative;
  }
 
- .profile-container-left div {
+ /* Antes (Costoso)*/
+ /* .profile-container-left div {
+     display: flex;
+     height: 100%;
+ } */
+
+/* Optimización */
+ .profile-picture-wrapper {
+     /* estilos */
      display: flex;
      height: 100%;
  }
 
- .profile-container-left div picture {
+ .profile-picture-wrapper picture {
      display: flex;
      flex: 1;
 
@@ -446,7 +454,7 @@
  }
 
  /* Estilos para tablets y dispositivos con pantallas medianas */
- @media (481px <= width <=768px) {
+ @media (481px <=width <=768px) {
      html {
          font-size: 14px;
      }

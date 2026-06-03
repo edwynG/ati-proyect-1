@@ -76,13 +76,16 @@ const load_scripts = async (root = "./") => {
     }
 }
 
+// Función para mostrar la información del perfil en la página, recibe una ruta opcional (por defecto es la raíz del proyecto)
 const show_profile_data = (root = './') => {
+
+    console.log("1. Contexto this en Función Flecha:", this);
 
     let profile_img_src_small = root + id + "/" + id + "Small" + profile.image_ext;
     let profile_img_src_big = root + id + "/" + id + "Big" + profile.image_ext;
     profile_container.innerHTML = `
                 <div class="profile-container-left">
-                    <div>
+                    <div class="profile-picture-wrapper">
                         <picture>
                             <source media="(max-width: 768px)" srcset="${profile_img_src_small}" class="profile-img" type="image/jpeg" id="profile-img-small">
                             <img src="${profile_img_src_big}" alt="Profile Image" class="profile-img" id="profile-img-big">
@@ -261,19 +264,46 @@ input_search.addEventListener('input', render_restore_profile);
 input_search_responsive.addEventListener('input', render_restore_profile);
 
 
-// logica para mostrar menu responsive
-const toggle_class_btn_user = () => {
-    container_nav_responsive.classList.toggle("inset-0");
-    container_nav_responsive.classList.toggle("relative");
-}
+// lógica para mostrar menu responsive
+const menuController = {
+    toggle_menu: function() {
+        // CAPTURA 3: Método de Objeto
+        console.log("3. Contexto this en Método de Objeto:", this);
+        
+        container_nav_responsive.classList.toggle("inset-0");
+        container_nav_responsive.classList.toggle("relative");
+    }
+};
 
-const hidden_menu_resposive = (e) => {
+// const toggle_class_btn_user = () => {
+//     container_nav_responsive.classList.toggle("inset-0");
+//     container_nav_responsive.classList.toggle("relative");
+// }
+
+// Actualiza el EventListener para llamar al método
+btn_user_menu.addEventListener("click", function() { 
+    menuController.toggle_menu(); 
+});
+
+// btn_user_menu.addEventListener("click", toggle_class_btn_user);
+
+// Logica para ocultar menu responsive al cambiar el tamaño de la pantalla
+function hidden_menu_resposive(e) {
+    "use strict";
+    // CAPTURA 2: Función Normal
+    console.log("2. Contexto this en Función Normal:", this);
+    
     if (window.innerWidth > 768) {
         container_nav_responsive.classList.remove("inset-0");
         container_nav_responsive.classList.remove("relative");
     }
 }
 
-btn_user_menu.addEventListener("click", toggle_class_btn_user);
+// const hidden_menu_resposive = (e) => {
+//     if (window.innerWidth > 768) {
+//         container_nav_responsive.classList.remove("inset-0");
+//         container_nav_responsive.classList.remove("relative");
+//     }
+// }
 
 window.addEventListener("resize", hidden_menu_resposive)
