@@ -13,7 +13,7 @@ Básicamente los tres pilares del frontend:
 ---
 
 ### Progreso del Proyecto
-Actualmente he completado **5 de 7 retos**. 
+Actualmente he completado **6 de 7 retos**. 
 
 >[!NOTE]
 >Iré actualizando este número y añadiendo detalles de cada reto a medida que se habiliten.
