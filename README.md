@@ -43,7 +43,7 @@ proyecto_1/
 
 ### ¿Por qué cambié la estructura al pasar de MPA a SPA?
 
-Al tomar la decisión de convertir mi proyecto de una **MPA (Multi-Page Application)** a una **SPA (Single Page Application)**, me di cuenta de que la estructura vieja ya no me servía. En una MPA tradicional, cada pantalla es un archivo HTML distinto y el servidor recarga toda la página en cada clic. En cambio, en una SPA solo existe un único archivo HTML que sirve como base, y es Javascript quien se encarga de intercambiar el contenido dinámicamente.
+Al convertir mi proyecto de una **MPA (Multi-Page Application)** a una **SPA (Single Page Application)**, me di cuenta de que la estructura vieja ya no me servía. En una MPA tradicional, cada pantalla es un archivo HTML distinto y el servidor recarga toda la página en cada clic. En cambio, en una SPA solo existe un único archivo HTML que sirve como base, y es Javascript quien se encarga de intercambiar el contenido dinámicamente.
 
 Este cambio radical en cómo funciona la web me obligó a reorganizar mis carpetas. Primero, dejé un único archivo base en la carpeta `views/index.html` y concentré toda la inteligencia de navegación en la carpeta `static/js` (separando la lógica en `index.js` y `profile.js`). 
 
