@@ -1,2 +1,25 @@
+# Ignorar repositorios de Git
 .git/
-Dockerfile
+.gitignore
+
+# Ignorar entornos virtuales locales
+venv/
+.venv/
+env/
+.env
+
+# Archivos compilados de Python locales
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración de editores
+.vscode/
+.idea/
+
+# Carpetas de laboratorios anteriores
+labs/
