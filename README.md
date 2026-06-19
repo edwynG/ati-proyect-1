@@ -26,6 +26,9 @@ proyecto_1/
 │   ├── index.json              # Lista general de estudiantes
 │   └── students/               # Carpetas por estudiante (perfil en JSON y fotos)
 ├── docs/                       # Documentación y reportes del proyecto
+│   ├── diagrams/               # Árboles DOM, CSSOM y de Renderizado
+│   ├── responsive_screenshots/ # Capturas de diseño responsivo
+│   └── submissions/            # Archivos PDF de entregas y reportes
 ├── views/                      # Archivos de la interfaz (HTML)
 │   └── index.html              # La única página de la aplicación (SPA)
 └── static/                     # Recursos estáticos
