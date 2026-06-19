@@ -34,6 +34,8 @@ proyecto_1/
 └── static/                     # Recursos estáticos
     ├── css/
     │   └── style.css           # Estilos visuales
+    ├── icon/                   # Iconos de la interfaz
+    │   └── *.svg, *.png
     └── js/
         ├── index.js            # Lógica principal, buscador y persistencia de memoria
         └── profile.js          # Lógica para manejar la vista de los perfiles
@@ -49,9 +51,6 @@ Además, como en una SPA los datos no pueden estar pegados dentro del HTML, cre�
 
 
 ### Progreso del Proyecto
-Actualmente he completado **6 de 7 retos**. 
-
->[!NOTE]
->Iré actualizando este número y añadiendo detalles de cada reto a medida que se habiliten.
+Actualmente he completado **7 de 7 retos**. 
 
 ---
